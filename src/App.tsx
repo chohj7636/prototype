@@ -6,7 +6,7 @@ function App() {
       <div className="h-[80px] w-full bg-[#efedfb]" />
       <div
         id="prototype-body"
-        className="mx-[20px] flex h-full w-full flex-col items-center justify-center gap-[20px] p-5"
+        className="flex h-full w-full flex-col items-center justify-center gap-[20px] p-5"
       >
         <CreateStoryWrapper />
       </div>
