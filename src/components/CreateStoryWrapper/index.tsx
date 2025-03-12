@@ -1,0 +1,56 @@
+import CharacterConfigCard from '../CharacterConfigCard';
+import { ScenarioPageSizeSelect } from '../ScenarioPageSizeSelect';
+import { Textarea } from '../ui/textarea';
+
+const CreateStoryWrapper = () => {
+  const printCard = () => {
+    return (
+      <div className="flex flex-col items-center">
+        {/* 이 부분이 반복 */}
+        <div className="flex items-center gap-4">
+          <CharacterConfigCard />
+          <div
+            id="delete"
+            className="h-[20px] w-[20px] rounded-full bg-black"
+          />
+        </div>
+        <div id="add" className="h-[20px] w-[20px] rounded-full bg-black" />
+      </div>
+    );
+  };
+
+  return (
+    <div className="flex w-full justify-center gap-20">
+      <div className="flex w-1/2 flex-col gap-3">
+        <div id="header" className="flex w-full flex-col items-center">
+          <p className="text-2xl font-semibold">
+            자유롭게 떠오르는 스토리를 적어보세요.
+          </p>
+          <p>
+            입력한 내용을 바탕으로 더욱 풍부한 시나리오를 완성할 수 있습니다.
+          </p>
+        </div>
+        <Textarea className="h-[255px]" placeholder="스토리를 입력해주세요." />
+        <div className="flex items-center gap-2">
+          <p className="text-[20px] font-semibold">페이지 설정</p>
+          <p className="text-[16px]">
+            시나리오 페이지를 설정하면 분량에 맞게 시나리오를 작성합니다.
+          </p>
+        </div>
+        <ScenarioPageSizeSelect />
+      </div>
+
+      <div className="flex w-1/2 flex-col items-start">
+        <div className="flex items-center gap-2">
+          <p className="text-[20px] font-semibold">캐릭터 설정</p>
+          <p className="text-[16px]">
+            주요 캐릭터 정보를 설정하면 AI 이미지 생성에 더욱 도움이 됩니다.
+          </p>
+        </div>
+        {printCard()}
+      </div>
+    </div>
+  );
+};
+
+export default CreateStoryWrapper;
