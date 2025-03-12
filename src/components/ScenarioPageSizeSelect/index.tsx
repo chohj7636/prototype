@@ -6,13 +6,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { useState } from 'react';
+import useMakeScenarioStore from '@/hooks/useMakeScenario';
 
 export const ScenarioPageSizeSelect = () => {
   const PAGE_SIZE = [12, 14, 16];
-  const [selectedPageSize, setSelectedPageSize] = useState(PAGE_SIZE[0]);
+  const { pageSize, setPageSize } = useMakeScenarioStore();
+
   return (
-    <Select defaultValue={selectedPageSize.toString()}>
+    <Select defaultValue={pageSize.toString()}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
@@ -23,7 +24,7 @@ export const ScenarioPageSizeSelect = () => {
               <SelectItem
                 key={element}
                 value={element.toString()}
-                onClick={() => setSelectedPageSize(element)}
+                onClick={() => setPageSize(element)}
               >
                 {element} 페이지
               </SelectItem>

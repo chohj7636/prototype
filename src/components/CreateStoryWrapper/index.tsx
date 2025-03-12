@@ -4,8 +4,13 @@ import { ScenarioPageSizeSelect } from '../ScenarioPageSizeSelect';
 import { Textarea } from '../ui/textarea';
 
 const CreateStoryWrapper = () => {
-  const { characterConfig, addCharacterConfig, deleteCharacterConfig } =
-    useMakeScenarioStore();
+  const {
+    characterConfig,
+    addCharacterConfig,
+    deleteCharacterConfig,
+    story,
+    setStory,
+  } = useMakeScenarioStore();
 
   const printCard = () => {
     return (
@@ -47,7 +52,12 @@ const CreateStoryWrapper = () => {
             입력한 내용을 바탕으로 더욱 풍부한 시나리오를 완성할 수 있습니다.
           </p>
         </div>
-        <Textarea className="h-[255px]" placeholder="스토리를 입력해주세요." />
+        <Textarea
+          className="h-[255px]"
+          placeholder="스토리를 입력해주세요."
+          value={story}
+          onChange={(e) => setStory(e.target.value)}
+        />
         <div className="flex items-center gap-2">
           <p className="text-[20px] font-semibold">페이지 설정</p>
           <p className="text-[16px]">

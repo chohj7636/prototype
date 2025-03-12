@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
 interface MakeScenarioState {
+  // 캐릭터 설정 영역
   characterConfig: {
     name: string | null;
     style: string | null;
@@ -12,9 +13,17 @@ interface MakeScenarioState {
     key: keyof MakeScenarioState['characterConfig'][number],
     value: string | null,
   ) => void;
-  //
+
   addCharacterConfig: () => void;
   deleteCharacterConfig: (index: number) => void;
+
+  // 스토리 작성 영역
+  story: string;
+  setStory: (story: string) => void;
+
+  // 페이지 사이즈 선택
+  pageSize: number;
+  setPageSize: (pageSize: number) => void;
 }
 
 const useMakeScenarioStore = create<MakeScenarioState>()(
@@ -58,6 +67,14 @@ const useMakeScenarioStore = create<MakeScenarioState>()(
       set((state) => ({
         characterConfig: state.characterConfig.filter((_, i) => i !== index),
       })),
+
+    // 스토리 작성
+    story: '',
+    setStory: (story: string) => set({ story }),
+
+    // 페이지 사이즈 선택
+    pageSize: 12,
+    setPageSize: (pageSize: number) => set({ pageSize }),
   })),
 );
 
