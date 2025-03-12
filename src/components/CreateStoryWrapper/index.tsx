@@ -1,20 +1,37 @@
+import useMakeScenarioStore from '@/hooks/useMakeScenario';
 import CharacterConfigCard from '../CharacterConfigCard';
 import { ScenarioPageSizeSelect } from '../ScenarioPageSizeSelect';
 import { Textarea } from '../ui/textarea';
 
 const CreateStoryWrapper = () => {
+  const { characterConfig, addCharacterConfig, deleteCharacterConfig } =
+    useMakeScenarioStore();
+
   const printCard = () => {
     return (
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center gap-4">
         {/* 이 부분이 반복 */}
-        <div className="flex items-center gap-4">
-          <CharacterConfigCard />
-          <div
-            id="delete"
-            className="h-[20px] w-[20px] rounded-full bg-black"
-          />
-        </div>
-        <div id="add" className="h-[20px] w-[20px] rounded-full bg-black" />
+        {characterConfig.map((_, index) => {
+          return (
+            <div key={index} className="flex items-center gap-4">
+              <CharacterConfigCard index={index} />
+              <button
+                id="delete"
+                className="rounded-[8px] border border-[#d9d9d9] px-2 py-1"
+                onClick={() => deleteCharacterConfig(index)}
+              >
+                del
+              </button>
+            </div>
+          );
+        })}
+        <button
+          id="add"
+          className="rounded-[8px] border border-[#d9d9d9] px-2 py-1"
+          onClick={() => addCharacterConfig()}
+        >
+          add
+        </button>
       </div>
     );
   };
