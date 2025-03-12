@@ -13,6 +13,8 @@ interface MakeScenarioState {
     value: string | null,
   ) => void;
   //
+  addCharacterConfig: () => void;
+  deleteCharacterConfig: (index: number) => void;
 }
 
 const useMakeScenarioStore = create<MakeScenarioState>()(
@@ -39,7 +41,23 @@ const useMakeScenarioStore = create<MakeScenarioState>()(
           i === index ? { ...config, [key]: value } : config,
         ),
       })),
-    //
+    // 캐릭터 추가
+    addCharacterConfig: () =>
+      set((state) => ({
+        characterConfig: [
+          ...state.characterConfig,
+          {
+            name: null,
+            style: null,
+            feature: null,
+          },
+        ],
+      })),
+    // 삭제하려는 인덱스가 아닌 요소만 남기고 삭제
+    deleteCharacterConfig: (index: number) =>
+      set((state) => ({
+        characterConfig: state.characterConfig.filter((_, i) => i !== index),
+      })),
   })),
 );
 
