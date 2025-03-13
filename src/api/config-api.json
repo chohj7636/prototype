@@ -1,0 +1,8 @@
+{
+  "apiInfo": {
+    "api_url": "https://service.anutacanvas.com/api"
+  },
+  "apiInfo_dev": {
+    "api_url": "http://10.100.101.23:15000/api"
+  }
+}
