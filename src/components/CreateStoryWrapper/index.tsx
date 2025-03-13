@@ -1,7 +1,10 @@
 import useMakeScenarioStore from '@/hooks/useMakeScenario';
+import { makeScenarioAPI } from '@/api/api';
+import { useMutation } from '@tanstack/react-query';
 import CharacterConfigCard from '../CharacterConfigCard';
 import { ScenarioPageSizeSelect } from '../ScenarioPageSizeSelect';
 import { Textarea } from '../ui/textarea';
+import ScenarioResultWrapper from '../ScenarioResultWrapper';
 
 const CreateStoryWrapper = () => {
   const {
@@ -10,7 +13,18 @@ const CreateStoryWrapper = () => {
     deleteCharacterConfig,
     story,
     setStory,
+    pageSize,
   } = useMakeScenarioStore();
+
+  const { mutate, data, isPending } = useMutation({
+    mutationFn: () =>
+      makeScenarioAPI({
+        story,
+        character: characterConfig,
+        page_cnt: pageSize,
+      }),
+    retry: false,
+  });
 
   const printCard = () => {
     return (
@@ -42,7 +56,7 @@ const CreateStoryWrapper = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="flex w-full flex-col gap-5">
       <div id="make-area" className="w-full">
         <div className="flex w-full justify-center gap-20">
           <div className="flex w-1/2 flex-col gap-3">
@@ -86,15 +100,15 @@ const CreateStoryWrapper = () => {
         <button
           id="make-button"
           className="w-[200px] cursor-pointer rounded-[8px] border border-[#bdbdbd] p-2"
-          onClick={() => console.log('click')}
+          onClick={() => mutate()}
         >
           시나리오 생성
         </button>
       </div>
 
-      <div id="result-area" className="w-full">
-        <p>결과</p>
-      </div>
+      {isPending && <p className="text-[18px] font-bold">Loading ... </p>}
+
+      <ScenarioResultWrapper pageSize={1} />
     </div>
   );
 };

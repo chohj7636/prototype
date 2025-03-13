@@ -10,15 +10,13 @@ if (!env) {
 }
 
 // GET Scenario
-export const getScenarioAPI = async (info: MakeScenarioParmasType) => {
-  const response = await axios.get<MakeScenarioResponseType>(
+export const makeScenarioAPI = async (info: MakeScenarioParmasType) => {
+  const response = await axios.post<MakeScenarioResponseType>(
     `${apiInfo.api_url}/make/scenario/`,
     {
-      params: {
-        story: info.story,
-        character: info.character,
-        page_cnt: info.page_cnt,
-      },
+      story: info.story,
+      character: info.character,
+      page_cnt: info.page_cnt,
     },
   );
   return response.data;
