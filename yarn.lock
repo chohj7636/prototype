@@ -1040,6 +1040,18 @@
     lightningcss "^1.29.1"
     tailwindcss "4.0.12"
 
+"@tanstack/query-core@5.67.3":
+  version "5.67.3"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.67.3.tgz#222795762c584d572f6f41bd4eb97f86f46f2eea"
+  integrity sha512-pq76ObpjcaspAW4OmCbpXLF6BCZP2Zr/J5ztnyizXhSlNe7fIUp0QKZsd0JMkw9aDa+vxDX/OY7N+hjNY/dCGg==
+
+"@tanstack/react-query@^5.67.3":
+  version "5.67.3"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.67.3.tgz#4a1a1a54828465ab6bc421e66dc7ebd88191e851"
+  integrity sha512-u/n2HsQeH1vpZIOzB/w2lqKlXUDUKo6BxTdGXSMvNzIq5MHYFckRMVuFABp+QB7RN8LFXWV6X1/oSkuDq+MPIA==
+  dependencies:
+    "@tanstack/query-core" "5.67.3"
+
 "@types/babel__core@^7.20.5":
   version "7.20.5"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.20.5.tgz#3df15f27ba85319caa07ba08d0721889bb39c017"
