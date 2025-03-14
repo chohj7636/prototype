@@ -108,7 +108,13 @@ const CreateStoryWrapper = () => {
 
       {isPending && <p className="text-[18px] font-bold">Loading ... </p>}
 
-      <ScenarioResultWrapper pageSize={1} />
+      {data && !isPending && (
+        <ScenarioResultWrapper
+          pageSize={data.payload.page_cnt}
+          synopsys={data.payload.synopsys}
+          scenarioPage={data.payload.scenario}
+        />
+      )}
     </div>
   );
 };

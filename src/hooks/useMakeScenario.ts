@@ -4,14 +4,14 @@ import { devtools } from 'zustand/middleware';
 interface MakeScenarioState {
   // 캐릭터 설정 영역
   characterConfig: {
-    name: string | null;
-    style: string | null;
-    feature: string | null;
+    name: string;
+    style: string;
+    feature: string;
   }[];
   setCharacterConfig: (
     index: number,
     key: keyof MakeScenarioState['characterConfig'][number],
-    value: string | null,
+    value: string,
   ) => void;
 
   addCharacterConfig: () => void;
@@ -43,7 +43,7 @@ const useMakeScenarioStore = create<MakeScenarioState>()(
     setCharacterConfig: (
       index: number,
       key: keyof MakeScenarioState['characterConfig'][number],
-      value: string | null,
+      value: string,
     ) =>
       set((state) => ({
         characterConfig: state.characterConfig.map((config, i) =>
@@ -56,9 +56,9 @@ const useMakeScenarioStore = create<MakeScenarioState>()(
         characterConfig: [
           ...state.characterConfig,
           {
-            name: null,
-            style: null,
-            feature: null,
+            name: '',
+            style: '',
+            feature: '',
           },
         ],
       })),
