@@ -26,7 +26,7 @@ export interface MakeScenarioPayload {
     title: string;
     genre: string;
     topic: string;
-    propogue: string;
+    prologue: string;
   };
   scenario: ScenarioType[];
   page_cnt: number;
